@@ -1,0 +1,3 @@
+## Background
+
+This folder includes pipelines used to analyze data on CDC's HPC infrastructure (SciComp). The scripts themselves are not meant to be able to be able to run if they are downloaded directly from this GitHub (at least at this stage), rather, they are meant to showcase a couple of the different pipelines I wrote in nextflow and a handful of the dependencies pyhon/R scripts that are called within those workflow.

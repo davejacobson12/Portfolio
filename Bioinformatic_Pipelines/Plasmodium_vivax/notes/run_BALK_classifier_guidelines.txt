@@ -1,0 +1,62 @@
+This document outlines the steps to run the BALK classifier for geographric prediction for both P vivax and P falciparum
+
+############################### Software required ############################################
+
+The pipeline uses a couple of different conda environments.
+Navigate to the following directory:
+/scicomp/groups-pure/Projects/CycloDeploy/Plasmodium_Ampliseq_Nextflow/
+
+Run the following code to install all of the conda environments
+bash ./CREATE_CONDA_ENVS.sh
+
+################################# P vivax guidelines #######################################################################################
+Navigate to the following folder
+/scicomp/groups-pure/Projects/CycloDeploy/Plasmodium_Ampliseq_Nextflow/P_vivax_GeoPrediction
+
+Edit the nextflow.config file to give the paths to the installed conda environments (around line 250 to 270)
+change the 'quh7' in the 'conda =' path to your CDC ID. 
+
+Copy FASTQ files you wish to analyze to the TEST_DATA folder. These must be paired files that end with R1_001.fastq.gz and R2_001.fastq.gz
+
+Create a metadata file that you wish to include in your final report. Follow the format of the 'pvivax_firstBatch_metadata.xlsx' file. 
+
+Open the 'qsub_balkClassifer.sh' script.
+
+Choose the analysis you with to run (the default is: P_vivax_classifier_complete_pipeline). All other options should remain hashed out.
+
+On the analysis you wish to run, add the --metadata flag, and give the full path to the metadata file that you just created.
+
+You may run the analysis once the FASTQ files are in the TEST_DATA directory and the metadata file is created and given as a flag in the qsub script.
+    qsub qsub_balkClassifer.sh
+
+The vcf files for each sample will be in the 'variantCalls' folder
+
+The geographic prediction for all samples in the run will be timestamped in the predictedOut folder
+    The pipeline will create outputs using gatk and bcftools variant callers. We have been using the gatk outputs, but the results are very similar between the two variant callers.
+
+###################################### P falciparum guidelines ############################################################################################
+
+Navigate to the following folder
+/scicomp/groups-pure/Projects/CycloDeploy/Plasmodium_Ampliseq_Nextflow/P_falciparum_GeoPrediction
+
+Edit the nextflow.config file to give the paths to the installed conda environments (around line 250 to 270)
+change the 'quh7' in the 'conda =' path to your CDC ID. 
+
+Copy FASTQ files you wish to analyze to the TEST_DATA folder. These must be paired files that end with R1_001.fastq.gz and R2_001.fastq.gz
+
+Create a metadata file that you wish to include in your final report. Follow the format of the 'pvivax_firstBatch_metadata.xlsx' file (from the /scicomp/groups-pure/Projects/CycloDeploy/Plasmodium_Ampliseq_Nextflow/P_vivax_GeoPrediction location). 
+
+Open the 'qsub_balkClassifer_pfal.sh' script.
+
+Choose the analysis you with to run (the default is: P_falciparum_classifier_complete_pipeline). All other options should remain hashed out.
+    The default qsub script will analyze both the pfs47 and cpmp genes. There is another script within the qsub file that gives the parameters to only analyze the pfs47 gene. Select which ever pipeline is appropriate for the data you have.
+
+On the analysis you wish to run, add the --metadata flag, and give the full path to the metadata file that you just created.
+
+You may run the analysis once the FASTQ files are in the TEST_DATA directory and the metadata file is created and given as a flag in the qsub script.
+    qsub qsub_balkClassifer.sh
+
+The vcf files for each sample will be in the 'variantCalls' folder
+
+The geographic prediction for all samples in the run will be timestamped in the predictedOut folder
+    The pipeline will create outputs using gatk and bcftools variant callers. We have been using the gatk outputs, but the results are very similar between the two variant callers.
