@@ -8,7 +8,7 @@ I am not able to share any of the data or reports that I used/created at CDC. Th
 
 ## Reports
 
-The rmarkdown reports are html documents and are not rendered in GitHub. You will need to download the raw contents of the file, then open those raw contents in a file browser to view the full report
+The rmarkdown reports are html documents and are not rendered in GitHub. You will need to download the gzipped example repeorts, unzip them, and then open the html files in a file browser to view the full report
 
 The dashboards I created at CDC were primarily in PowerBI (with some Rshiny as well). I have decided to recreate these dashboards using plotly and dash in python. The idea is to showcase what was included in the various reports.
 
