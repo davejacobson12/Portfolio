@@ -1,0 +1,137 @@
+---
+title: Cyclospora Genotyping Process Report
+output:
+  html_document:
+    self_contained: yes
+---
+<style type="text/css">
+.main-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+
+___
+
+`r current_date`
+
+### `r current_state_running`
+
+<br>
+
+___
+
+
+## Preliminary Genotyping Results {.tabset}
+
+### Interpretive Guidelines
+
+The purpose of this report is to inform participating laboratories on the status of fecal specimens and/or Cyclospora genotyping sequencing data submitted to CDC for Cyclospora genotyping analysis. The processing status of each specimen is reported alongside pertinent metadata and Temporal-Genetic Cluster (TGC) code membership. Specimens that are missing collection dates and/or case IDs are also listed, as these data are necessary for performing the analysis.
+
+The report is separated into five tabs:
+
+1)	**Processing Summary**: Lists the total number of specimens processed from `r current_state_code`, inclusive of samples submitted by `r current_state_code` and samples linked to case patients residing in `r current_state_code`. 
+
+2)  **Newly Added Specimens**: All specimens from `r current_state_code` that were added to this report over the past week.
+
+3)  **Specimens Changed TGC**: Provides a table with the list of all specimens from `r current_state_code` that have shifted Temporal Genetic Cluster (TGC) codes over the past week.
+
+4)	**Genotyping Results**: Contains all reportable data for each specimen from `r current_state_code` and lists the specimens missing collection dates and/or case IDs in red under the heading ‘Additional Information Required’.
+
+5)	**Quality Control (Sequencing Partners Only)**: Reports the pass/fail status of all positive and negative controls submitted by our sequencing partners. Non-sequencing partners will have no data reported in this tab.
+
+If you detect any errors or inconsistencies, or have any comments or questions regarding these results please contact CDC’s Cyclospora genotyping team: CyclosporaAMD@cdc.gov. 
+For epidemiology-related inquiries, contact the CDC Cyclospora epidemiology team: Cyclospora@cdc.gov
+
+**Disclaimer: These results are intended for public health purposes only and must NOT be communicated to the patient, their care provider, or placed in the patient’s medical record. These results should NOT be used for diagnosis, treatment, or assessment of patient health or management.**
+
+<br>
+
+___
+
+
+### Processing Summary
+
+
+The two tables on this tab provide a summary of genotyping information obtained for specimens sequenced during the present cyclosporiasis season (i.e., it excludes validation specimens and controls). The total count of specimens related to `r current_state_code` is broken down by in-state vs out-of-state residence, as well as the processing status for all specimens.
+
+
+```{r, data_summary, results="markup", echo=FALSE, eval=TRUE}
+SUMMARY
+firstTable
+```
+
+___
+
+### Newly Added Specimens
+
+The table below represents newly genotyped `r current_state_code` specimens as of this week. These specimens will also be highlighted in yellow in the table on the *Genotyping Results* tab. The date the specimen was first included in the genotyping report is listed in the **First_Reported** column. The **Status** column under the *Genotyping Results* subheading lists the processing status of the specimen at CDC, as described below:
+
+1)  **PENDING**: The specimen has been received but has not yet been sequenced. The typical turnaround time from receipt to sequencing is less than 10 days.
+
+2)	**PASS**: The specimen has been sequenced and has passed the genotyping inclusion criteria (haplotypes detected in 5 or more markers). Note that not all specimens that PASS genotyping will have a TGC code.
+
+3)	**FAIL**: The specimen has been processed and it either does not have sufficient Cyclospora DNA detected via qPCR to perform sequencing or haplotypes were detected in 4 or fewer markers, meaning the specimen did not meet genotyping inclusion criteria. Specimens without sufficient Cyclospora DNA for sequencing have ‘No Ct’ listed in the **Reason_for_fail** column. Specimens that were sequenced but had insufficient genotyping data have the missing markers listed in the **Reason_for_fail** column.
+
+```{r,newSpecmens_results, results="markup", echo=FALSE, eval=TRUE}
+newSpecimen_kable_out
+```
+
+___
+
+### Specimens Changed TGC
+
+The table below lists all specimens that have shifted TGC membership over the past week. These specimens are also highlighted in red in the table on the *Genotyping Results* tab. The date the specimen received a new TGC code is listed in the **Updated** column and the **Previous TGC code**, **Current TGC code**, and reason for TGC status change are grouped under the TGC Data subheading. Specimens will be included in this table for the following reasons (listed in the **Status** column):
+
+1)	**No TGC code > assigned a TGC code**: Specimen has not previously been assigned to a TGC and is receiving its first TGC code of the season.
+
+2)	**In TGC last week > no TGC code**: Specimen was assigned a TGC last week but is no longer assigned to a TGC this week.
+
+3)	**Changed TGC this week**: Specimen wass assigned to one TGC last week but is assigned to a different TGC this week.
+
+4)	**TGC code > no TGC code > TGC code**: Specimen jumped from being assigned to a TGC in previous weeks, to having no TGC membership in proceeding weeks, and now has been re-assigned to a TGC.
+
+
+```{r,data_summary2, results="markup", echo=FALSE, eval=TRUE}
+statusChangeTable_Out
+```
+<br>
+
+### Genotyping Results
+
+Please refer to the **Additional Information Required** section below to see the list of specimens that require additional metadata submission. Please contact CDC's *Cyclospora* genotyping team to submit these data (CyclosporaAMD@cdc.gov or Cyclospora@cdc.gov)
+
+The Specimens Genotyped table contains results for all specimens genotyped related to `r current_state_code`. Specimens highlighted in red are specimens that have changed TGCs over the past week; these are also listed in the table on the *Specimens Changed TGC* tab. Specimens highlighted in yellow are newly added to the report this week and are also listed in the *Newly Added Specimens* tab. 
+
+The **Status** column under the *Genotyping Results* subheading has three possible results, as described below:
+
+
+1)  **PENDING**: The specimen has been received but has not yet been sequenced. The typical turnaround time from receipt to sequencing is less than 10 days.
+
+2)  **PASS**: The specimen has been sequenced and has passed the genotyping inclusion criteria (haplotypes detected in 5 or more markers). Note that not all specimens that PASS genotyping will have a TGC code.
+
+3)  **FAIL**: The specimen has been processed and it either does not have sufficient Cyclospora DNA detected via qPCR to perform sequencing or haplotypes were detected in 4 or fewer markers, meaning the specimen did not meet genotyping inclusion criteria. Specimens without sufficient Cyclospora DNA for sequencing have ‘No Ct’ listed in the **Reason_for_fail** column. Specimens that were sequenced but had insufficient genotyping data have the missing markers listed in the **Reason_for_fail column**.
+
+
+```{r, clinical_specimens, results="markup", echo=FALSE, eval=TRUE}
+kable_out
+```
+
+<br>
+
+___
+
+### Quality Control (Sequencing Partners Only)
+
+
+```{r, control_specimens, results="markup", echo=FALSE, eval=TRUE}
+pos_controls
+neg_controls
+```
+
+Note: If a FAIL result is indicated here for any of these specimens, please contact the CDC *Cyclospora* genotyping team at CyclosporaAMD@cdc.gov
+
+
+**END OF REPORT**
