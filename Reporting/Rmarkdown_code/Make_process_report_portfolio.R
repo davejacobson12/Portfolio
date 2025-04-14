@@ -22,10 +22,10 @@ date_now <- Sys.Date()
 current_date <- paste("Date (YYYY-MM-DD): ",date_now,"
 ", sep="")
 fullPath <- "/Users/davejacobson/Desktop/DataScience_Trainings/Portfolio/Reporting/Rmarkdown_code/"
-epi_clus <- read.csv(paste(fullPath,"epi_clusters.csv", sep  =""), header = T)
-lab_data <- read.csv(paste(fullPath,"lab_metadata.csv",sep  =""), header =T)
-clus_data <- read.csv(paste(fullPath,"cluster_memberships.tsv",sep  =""), sep = "\t", header =T)
-tgc_data <- read.csv(paste(fullPath,"tgc_mem.csv",sep  =""), sep = ",", header =T)
+epi_clus <- read.csv(paste(fullPath,"input_data/epi_clusters.csv", sep  =""), header = T)
+lab_data <- read.csv(paste(fullPath,"input_data/lab_metadata.csv",sep  =""), header =T)
+clus_data <- read.csv(paste(fullPath,"input_data/cluster_memberships.tsv",sep  =""), sep = "\t", header =T)
+tgc_data <- read.csv(paste(fullPath,"input_data/tgc_mem.csv",sep  =""), sep = ",", header =T)
 
 #remove columns that have empty header names
 epi_clus <- epi_clus[,!grepl("X", colnames(epi_clus))]
@@ -43,7 +43,7 @@ names(current_clinical_cases)[names(current_clinical_cases) == "LSDB_Sequence_ID
 names(current_clinical_cases)[names(current_clinical_cases) == "LSDB_Specimen_ID"] <- "LSDB_Lab_ID"
 names(current_clinical_cases)[names(current_clinical_cases) == "Date_Collected"] <- "Collection_date"
 names(current_clinical_cases)[names(current_clinical_cases) == "Cluster"] <- "GeneticCluster"
-current_clinical_cases$Date_changed_TGC[is.na(current_clinical_cases$Date_changed_TGC)] <- "4/5/2025"
+current_clinical_cases$Date_changed_TGC[is.na(current_clinical_cases$Date_changed_TGC)] <- "4/7/2025"
 # print(current_clinical_cases)
 # quit()
 #adding in residence column here for example purposes
@@ -158,9 +158,10 @@ if(length(all_states_to_make_a_report_for_final) > 0){
 
 	#extract columns that will be used for different purposes
 	#This small table is used for the TGC updates, so don't need everything
-	# print(CURRENT_clinical_cases_state_dt)
-	# CURRENT_clinical_cases_state_dt_smallTable <- CURRENT_clinical_cases_state_dt[,c(1:6,9,11,12,16,17)]
-	CURRENT_clinical_cases_state_dt_smallTable <- CURRENT_clinical_cases_state_dt[,c(1:6,9,11,12,15,16)]
+	print(CURRENT_clinical_cases_state_dt)
+	# quit()
+	CURRENT_clinical_cases_state_dt_smallTable <- CURRENT_clinical_cases_state_dt[,c(1,2,4,5,6,9,10,13,14,15,16)]
+	# CURRENT_clinical_cases_state_dt_smallTable <- CURRENT_clinical_cases_state_dt[,c(1:16)]
 
 	#this next table doesn't include the previous TGCs and it is used for making the table with all specimens
 	CURRENT_clinical_cases_state_dt <- CURRENT_clinical_cases_state_dt[,c(1:16)]
@@ -297,21 +298,23 @@ if(length(all_states_to_make_a_report_for_final) > 0){
 	#we'll come back to working with the status change specimens later on
 
 	#Reorder columns so they fit a more logical flow of information
-	CURRENT_clinical_cases_state_dt <- CURRENT_clinical_cases_state_dt[,c(7, 8, 9, 2, 3,4,5,6, 13, 14, 10, 11, 12, 15, 1, 16)]
+	
+	# CURRENT_clinical_cases_state_dt <- CURRENT_clinical_cases_state_dt[,c(7, 8, 9, 2, 3,4,5,6, 13, 14, 10, 11, 12, 15, 1, 16)]
+	CURRENT_clinical_cases_state_dt <- CURRENT_clinical_cases_state_dt[,c(4,4,15,2,6,5,7,7,9,8,13,10,1)]
 
 	#Drop the column that has the statuschange / new specimen information for specimens, because we are using row indices to color those rows
-	CURRENT_clinical_cases_state_dt <- CURRENT_clinical_cases_state_dt[,-16]
+	# CURRENT_clinical_cases_state_dt <- CURRENT_clinical_cases_state_dt[,-16]
 	CURRENT_clinical_cases_state_dt_forKable <- CURRENT_clinical_cases_state_dt
 
 	#Drop genetic cluster and lsdb lab ID, this can change based on what we decide we want to include in reports
-	CURRENT_clinical_cases_state_dt_forKable <- CURRENT_clinical_cases_state_dt_forKable[,-c(11,14)]
+	# CURRENT_clinical_cases_state_dt_forKable <- CURRENT_clinical_cases_state_dt_forKable[,-c(11,14)]
 
 
 	#Rownames should be null for making kable table
 	rownames(CURRENT_clinical_cases_state_dt_forKable) <- NULL
 	#Rename columns to be a little bit shorter in an effort to keep the table as condensed as possible
 	colnames(CURRENT_clinical_cases_state_dt_forKable) <- c("Received", "First_Reported", "Updated","Case_ID", "State_Lab_ID", "Collected", "Submitter", "Residence", "Status","Reason_for_fail^1^", "TGC_Code^2^", "Cluster","LSDB_Seq_ID")
-	print(CURRENT_clinical_cases_state_dt_forKable)
+	# print(CURRENT_clinical_cases_state_dt_forKable)
 	#Make the kable for the HTML report
 	kable_out <- knitr::kable(CURRENT_clinical_cases_state_dt_forKable, "html", padding = 10, line_sep = 2, align = rep("c", 13)) %>% 
 		kableExtra::kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, position = "center", font_size = 12) %>%
@@ -459,7 +462,9 @@ if(length(all_states_to_make_a_report_for_final) > 0){
 
 	rownames(statusChangeTable) <- NULL
 	#Reorganize the tgc changed table to follow similar flow of main table
-	statusChangeTable <- statusChangeTable[,c(7,2,3,4,5,6,10,8,11,9,1)]
+	print(statusChangeTable)
+	# statusChangeTable <- statusChangeTable[,c(7,2,3,4,5,6,10,8,11,9,1)]
+	statusChangeTable <- statusChangeTable[,c(10,2,5,4,11,11,9,8,6,7,1)]
 	colnames(statusChangeTable) <- c("Updated", "Case_ID", "State_Lab_ID", "Collection_Date", "Submitter", "Residence", "Prev. TGC", "Current TGC", "Status", "Cluster", "LSDB_Seq_ID")
 	statusChangeTable_Out <- knitr::kable(statusChangeTable, "html", padding = 10, line_sep = 2, align = rep("c", 11)) %>% kableExtra::kable_styling(bootstrap_options = c("striped", "hover"), full_width = T, position = "center", font_size = 12)
 
@@ -492,7 +497,7 @@ if(length(all_states_to_make_a_report_for_final) > 0){
 	newSpecimen_kable_out <- add_header_above(newSpecimen_kable_out, c("Specimens Genotyped"= 12), italic = FALSE, font_size = 16, align = "center", line = FALSE, background = "#9A9A9A", color = "#F5F5F5", extra_css = "line-height: 20pt;")
 
 	#Make the table and name it / put it in the right spot
-	rename_html <- paste0(fullPath,"",date_now,"_",time_now,"_",current_state_code,"_cycloGenotyping_process_report.html")
+	rename_html <- paste0(fullPath,"output_reports/",date_now,"_",time_now,"_",current_state_code,"_cycloGenotyping_process_report.html")
 	rmarkdown::render(paste(fullPath,"Make_process_report_portfolio.Rmd",sep =""), "html_document",  run_pandoc = TRUE)
 
 	file.copy(paste(fullPath,"Make_process_report_portfolio.html", sep = ""), to= rename_html, overwrite = TRUE)
