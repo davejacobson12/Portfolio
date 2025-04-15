@@ -1,0 +1,5 @@
+Sample_Status,CSID,LSDB_Specimen_ID,LSDB_Sequence_ID,State_Lab_ID,Case_ID,Collection_date,Submitter_State,Reported_Travel_History,Malaria_Species,HRP2/3 Deletions,GeoPrediction,GeneticClusterNumber,Final_COI,State_name,ReportStatusDate,I258M,Y268S/C
+Final_Report,409788457,DM25_TX0001,DM25_TX0001_Pf1,Txmal001,Txcasemalaria001,3/9/2025,TX,Ghana,Plasmodium falciparum,No Deletion,AF_W,,Monoclonal,Texas,4/12/2025,I,Y
+Final_Report,567341841,DM25_TX0002,DM25_TX0002_Pf1,Txmal002,Txcasemalaria002,3/9/2025,TX,,Plasmodium falciparum,Not tested,AF_R,,Multiclonal,Texas,4/12/2025,I,Y
+Final_Report,145500629,DM25_TX0005,DM25_TX0005_Pf1,Txmal005,Txcasemalaria005,4/9/2025,TX,Kenya,Plasmodium falciparum,No Deletion,AF_W,,Monoclonal,Texas,4/12/2025,I,Y
+Final_Report,348907300,DM25_TX0006,DM25_TX0006_Pf1,Txmal006,Txcasemalaria006,4/9/2025,TX,Tanzania,Plasmodium falciparum,Not tested,AF_R,,Multiclonal,Texas,4/12/2025,I,Y

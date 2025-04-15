@@ -1,0 +1,373 @@
+---
+title: "Malaria Domestic Surveillance Genotyping Process Report"
+output: html_document
+self-contained: yes
+bibliography: plasmodium_report.bib
+---
+
+<style type="text/css">
+.main-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+---
+
+## Date of Report Generation: 
+#### `r format(Sys.time(), '%Y-%m-%d')`
+
+## Partner Lab:
+#### `r stateID` 
+ 
+---
+
+## Preliminary Genotyping Results {.tabset}
+
+### Introduction
+
+**NOTE: These results are intended for public health purposes only and must NOT be communicated to the patient, their care provider, or placed in the patient’s medical record. These results should NOT be used for diagnosis, treatment, or assessment of patient health or management.** 
+
+---
+
+#### **Contents of Report**
+
+The Laboratory Science and Diagnostics Branch (LSDB) at the Centers for Disease Control and Prevention (CDC) performs regular genotyping of *Plasmodium falciparum* and *Plasmodium vivax* as part of its Domestic Malaria Surveillance Program. After DNA extraction, LSDB laboratorians use PET-PCR [@lucchi2013molecular] to determine or confirm the *Plasmodium* species present in each sample (Table 1). Samples positive for *P. falciparum* undergo selective whole genome amplification and whole genome sequencing to characterize each sample's antimalarial drug-resistance profile at drug resistance genes. Additionally, samples will be analyzed at geographically-informative genetic markers to determine the sample's most likely geographic region. Predicting the most likely geographic region is useful when travel history is unavailable or appears unreliable. Samples positive for *P. vivax* via PET-PCR are analyzed with a highly-multiplexed AmpliSeq assay that targets over 400 regions across all 14 chromosomes of the *P. vivax* genome. These targets are used to assess geographic region prediction and detect closely related *P. vivax* samples. Samples positive for any other *Plasmodium* species are not currently subjected to genotyping analysis.
+
+Here, we report on the processing status of all samples sent to CDC as part of the Domestic Malaria Surveillance Program, and we list *P. falciparum* drug resistance SNPs, *P. falciparum* geographic region prediction, *P. vivax* closely related genetic clusters, and *P. vivax* geographic region prediction.
+
+___
+
+
+#### **Table 1: *Plasmodium spp.* Molecular Characterization Performed in LSDB** 
+
+```{r, echo = F}
+ 
+petTableKable
+  
+```
+
+---
+
+
+### Samples Received at CDC
+
+#### **Sample Processing Status**
+
+Table 2 on this page lists all samples received from `r stateID` by CDC for Domestic Malaria Surveillance, their CDC and state laboratory identifiers, brief metadata, and the *Plasmodium* species detected by CDC's PET-PCR assay. The **LSDB_LAB_ID** columns list the sample's CDC identifier, which is used to link genotyping data to sample metadata. The **State_Lab_ID**, **Collection_date**, and **Reported_Travel_History** are metadata provided by the submitting lab and facilitate linking genotyping results to epidemiologic investigations.
+
+The columns under the ***CDC Processing*** heading provide brief details about CDC's processing of the sample and *Plasmodium* species detection via PET-PCR. The **Sample_Status** column lists whether CDC has received/processed/analyzed each sample submitted by `r stateID`. A sample may be in any of the three statuses listed below:
+
+1) *Sample Received:* Sample has been received at CDC and is in queue for laboratory processing.
+
+2) *Sample being processed:* Sample is undergoing laboratory processing and bioinformatic analyses.
+
+3) *Review/sharing of sample reports:* The sample's results are under final review. After review, the sample's results are shared.
+
+The **ReportStatusDate** lists the most recent date that CDC has updated the sample's processing status (e.g. this date will be updated when a sample advances from 'Sample received' to 'Sample being processed').
+
+
+Please contact MalariaLab@cdc.gov for laboratory related questions for any sample submitted. Please contact malariasurveillance@cdc.gov for any epidemiology related questions.
+
+___
+
+#### **The table below is available for download via the following link:**
+
+```{r, echo = F}
+xfun::embed_file(specimenProcessingCSV)
+```
+
+---
+
+
+#### **Sample Processing Status and Species Detection**
+
+
+```{r, echo = F}
+ 
+table1
+  
+```
+
+---
+
+### *P. falciparum* Drug Resistance Screening, Geographic Prediction, and *pfhrp2/3* Gene Deletions
+
+#### **Drug Resistance Screening Background**
+
+CDC developed the Malaria Resistance Surveillance (MaRS) [@talundzic2018next; @marsGit] approach to examine *P. falciparum* for possible genetic determinants of resistance to antimalarial drugs commonly used to treat *P. falciparum* malaria. With the MaRS bioinformatic workflow, CDC analyzes markers associated with *P. falciparum* malaria resistance to chloroquine (chloroquine resistance transporter: *Pfcrt*), sulfadoxine (dihydropteroate synthase gene: *Pfdhps*), pyrimethamine, proguanil (dihydrofolate reductase gene: *Pfdhfr*) lumefantrine (multi-drug resistance 1 gene: *Pfmdr1*), artemisinin (Kelch-13 propeller domain gene: *Pfk13*), and atovaquone (cytochrome B gene: *Pfcytb*) to identify amino acid mutations at various codons within each gene that have previously been associated with drug resistance. In addition to these six genes, drug resistance has also been associated with *plasmepsin 2* (piperaquine) and *pfcoronin* (artemisinins), and workflows to analyze these two genes are in development. Sequences of these loci are extracted from the whole genome sequence data generated for *P. falciparum* isolates submitted to CDC for drug resistance surveillance and are analyzed using our bioinformatic workflow.
+
+#### **Geographic Region Prediction Background**
+
+In addition to the six genes used for drug resistance surveillance listed above, CDC analyzes sequence data in an effort to predict the most likely geographic region of *P. falciparum* samples. The workflow originally consisted of anlyzing the surface protein Pfs47 (*Pfs47*) and conserved *Plasmodium* membrane protein (*Pfcpmp*) genes but has been expanded to include over 200 SNPs from throughout the *P. falciparum* genome. Geographic prediction is performed with a likelihood classifier [@trimarsanto2022molecular] built from a reference population from the [MalariaGEN Pf7 data release](https://apps.malariagen.net/apps/pf7/) [@hamid2023pf7] and is accurate to the continent level for the two-gene approach [@molina2021genotyping; @pierreLouisPfal] and is accurate to the sub-continent level with the 211 SNP approach. The probability that the sample belongs to the geographic region indicated in the table below is given in parenthesis. Geographic prediction is useful for detecting if the parasite has a genetic signature associated with a specific geographic location; however, this approach cannot definitively ascertain where the infection was acquired for each case, as travelers from one region may carry parasites to a different region via international travel, potentially leading to local transmission of parasites that are not originally from the travelers' destination. Note that CDC plans to use the 211-SNP approach moving forward; however, some samples were only analyzed with the two-gene approach. Please contact MalariaLab@cdc.gov for more information on geographic prediction.
+
+```{r}
+
+geoKablePfal
+
+```
+
+#### ***pfhrp2/3* Gene Deletions Background**
+
+Rapid diagnostic tests (RDTs) targeting the histidine rich protein (HRP) are vital for comprehensive *P. falciparum* surveillance in malaria-endemic regions. Deletions of *pfhrp2/3* genes compromise the efficacy of RDTs by causing true *P. falciparum* infections to go undetected, raising the risk of false negatives and ultimately morbidity [@who2021HRP]. Deletions were first detected in South America and have since spread to Africa and Asia [@who2021HRP]. Tracking the prevalence and geography of HRP deletions is crucial for understanding when countries/regions need to consider shifting *P. falciparum* testing strategies [@who2021HRP]. We report if deletions in *pfhrp2*, *pfhrp3*, or *pfhrp2* and *pfhrp3* were detected; however, if a multiclonal infection is detected (see below), then we do not report on the status of HRP deletions and the sample's result states *Cannot Predict*. 
+
+
+#### **Complexity of Infection Background**
+
+Infection with multiple clones of *Plasmodium* can complicate genetic analysis and make it difficult to ascertain geographic region prediction, antimalarial drug resistance, and *pfhrp2/3* deletions of individual clones. Our workflow uses two approaches [@paschalidis2023coiaf; @lee2016assessing] for estimating complexity of infection (COI), also referred to as multiplicity of infection (MOI), and we report whether our analysis identified a likley monoclonal or multiclonal infection. If the two approaches disagree on clonality estimation or there was insufficient sequence coverage to confidently asses COI, we report an 'Indeterminate' COI.
+
+
+___
+
+
+#### **Samples Analyzed for *P. falciparum* Drug Resistance**
+
+Table 3 lists all samples processed for *P. falciparum* drug resistance screening via the MaRS bioinformatic workflow described above. Drug-resistance SNPs for each sample analyzed in MaRS are listed in Tables 4 through 10 on this page.
+
+```{r}
+
+marsTable
+
+```
+___
+
+
+#### A table with SNP results for each sample across all six genes analyzed in MaRS is available via the link below:
+
+```{r, echo = F}
+xfun::embed_file(completeMaRSName)
+```
+
+
+
+___
+
+
+#### Chloroquine Resistance Transporter (*Pfcrt*) Drug Resistance SNPs
+
+
+```{r}
+ 
+crtTable
+
+```
+
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+
+
+**Interpretation:**  *P. falciparum* parasites found carrying genotype (CVMNK) for codons 72-76 are considered wild type and are chloroquine-sensitive. Samples with mutations at codon 76 plus combinations of mutations at the other codons are likely chloroquine-resistant [@whoResistance]. Samples may show evidence for more than one genotype at various codons due to a potential mixed strain infection, this is represented by multiple amino acid residues separated by a forward slash ("/"). Chloroquine resistance is widespread across Africa, South America, and Asia; however, it is not commonly observed in parts of Central America and Hispaniola [@whoResistance]. This gene is also implicated in changes lumefantrine susceptibility; parasites wildtype at codon 76 are less susceptible to lumefantrine (the partner drug in artemether-lumefantrine). Currently, parasite populations in Sub-Saharan Africa are reverting to chloroquine sensitivity (i.e., the wildtype 76 codon), and consequently these parasites are becoming less susceptible to lumefantrine. While these markers are associated with changes in lumefantrine susceptibility, there is no good molecular marker for lumefantrine resistance, and lumefantrine resistance cannot be predicted from molecular markers alone. 
+
+---
+
+#### Kelch 13 (*Pfk13*) Drug Resistance SNPs
+
+```{r}
+k13Table
+
+```
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+  
+
+
+**Interpretation:** The markers in the table above are World Health Organization (WHO)-validated markers of artemisinin partial resistance [@who-artemisinin-resistance], which refers to a delay in parasite clearance after treatment with artemisinin combination therapy (ACT) [@who-artemisinin-resistance]. The mechanism of drug resistance to artemisinins is unique compared to other antimalarials, and manifests in delayed clearance but not overall treatment outcome. Most patients infected with parasites with artemisinin partial resistance will be cured by an ACT, but will be microscopy-positive for longer than patients infected with wildtype parasites. Artemisinin partial resistance has been identified in the Greater Mekong subregion of Asia and in parts of Africa (Eritrea, Rwanda, Uganda, and Tanzania) [@who-artemisinin-resistance].
+
+---
+
+#### Multidrug Resistance Protein 1 (*Pfmdr1*) Drug Resistance SNPs
+
+```{r}
+ 
+mdr1Table
+
+```
+
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+
+
+
+**Interpretation:** The *Pfmdr1* gene has been implicated in decreased sensitivity to multiple antimalarials, including mefloquine, piperaquine, and lumefantrine [@whoResistance; @veiga2016globally]. Interpreting results at *Pfmdr1* is complex as copy number variation is associated with resistance [@whoResistance]; however, mutations in the codons listed in the table above have been associated with antimalarial resistance [@veiga2016globally]. 
+
+Parasites wildtype at codon 86 are thought to be less susceptible to lumefantrine. While this marker is associated with changes in lumefantrine susceptibility, there is no good molecular marker for lumefantrine resistance, and lumefantrine resistance cannot be predicted from molecular markers alone.
+
+---
+
+#### Cytochrome B (*Pfcytb*) Drug Resistance SNPs
+
+```{r}
+
+cytbTable
+
+```
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+ 
+
+**Interpretation:** Mutations at two  *Pfcytb* codons, 258 and 268, are associated with atovaquone resistance [@plucinski2014novel]. Atovaquone is prescribed in combination with proguanil (AP) and is commonly used to treat uncomplicated *P. falciparum* malaria in U.S. travelers. Pfcytb mutations associated with AP treatment failures are rarely found in pretreatment isolates, but they can arise after treatment with AP from de novo evolution in the patient. Detection of a pfcytb mutation at 258 and 268 almost exclusively occurs in cases of AP treatment failure.
+
+---
+
+#### Dihydrofolate Reductase (*Pfdhfr*) and Dihydropteroate synthase (*Pfdhps*) Drug Resistance SNPs
+
+```{r}
+
+
+pfdhps_dhfr_copyKbl
+
+```
+
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+ 
+
+**Interpretation:**  The risk of *P. falciparum* resistance to sulfadoxine-pyrimethamine occurs when there is a combination of mutations at specific codon positions in *Pfdhfr* and *Pfdhps*, two enzymes involved in the folate biosynthesis pathway [@gregson2005mechanisms]. Resistance to SP can be inferred from the cumulative number of mutations at the 51, 59, and 108 codons in *Pfdhfr* and the 436, 437, 540, 581, and 613 codons in *Pfdhps* [@whoResistance]. As the number of mutations increase the strength of resistance increases; the occurrence of three or more mutations leads to the highest level of resistance for corresponding drugs and generally correlates with treatment failure [@naidoo2013mapping]. 
+
+Resistance to cycloguanil, the active metabolite of proguanil, is also conferred by the accumulation of multiple mutations in the *Pfdhfr* gene. Patients infected with parasites with resistant alleles at pfdhfr and treated with the drug combination atovaquone-proguanil are at higher risk for treatment failure due to de novo mutations in the *Pfcytb* gene.
+
+---
+
+#### Plasmepsin 2 (*plasmepsin 2*) Drug Resistance SNPs
+
+```{r}
+
+
+plasmepsinTable
+
+```
+
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+ 
+
+**Interpretation:**  Multiple copies of the *plasmepsin 2* and *plaspempsin 3* genes are associated with piperaquine resistance in Southeast Asia [@witkowski2017surrogate]. Additionally, there has been an increase in prevalence of multicopy *plasmepsin 2* after the introduction of dihydroartemisinin-piperaquine as a treatment in Southeast Asia in early 2010s [@witkowski2017surrogate].
+
+---
+
+#### Coronin (*Pfcoronin*) Drug Resistance SNPs
+
+```{r}
+
+
+coroninTable
+
+```
+
+
+**Note 1:** An 'x' indicates CDC did not obtain sufficient coverage to confidently assign a genotype for the sample at that codon. These cells are highlighted in light blue.
+
+**Note 2:** Cells highlighted in red represent loci where an alternative amino acid was detected and thus the sample does not carry the wild type allele at that codon.
+ 
+
+**Interpretation:**  *Pfcoronin* mediates artemisinin resistance in a similar mechanism to *PfK13* by limiting uptake of hemoglobin in resistant parasites, thus inhibiting the efficacy of artemisinin-based drugs [@ullah2023artemisinin]. Mutations in *Pfcoronin* have been detected throughout Africa, with highest prevalence in West Africa (e.g., Senegal, Cameroon, Cote d'Ivoire) [@owoloye2021prevalence].
+
+
+### *P. vivax* Geographic Prediction and Clustering
+
+#### **Background**
+
+
+##### ***Plasmodium vivax* Genotyping**
+
+The Centers for Disease Control and Prevention (CDC) developed a highly-multiplexed genotyping approach using Illumina's AmpliSeq technology to perform surveillance of travel-related and autochthonous *Plasmodium vivax* cases in the United States [@barrattPvivax]. The genotyping assay encompasses 495 amplicons across all 14 chromosomes of the *P. vivax* PvP01 reference genome and has two primary goals:
+
+1) Predict most likely geographic region of the *P. vivax* isolate detected.
+2) Genetic clustering to identify closely related isolates of *P. vivax*.
+
+This report lists the genetic cluster membership for all samples from `r stateID` that were successfully genetically clustered and provides a tree that shows the relationship between clinical samples and a limited reference population. This report also includes the most likely geographic region for *P. vivax* parasites sequenced from each sample.
+
+##### **Genetic Clustering**
+
+*P. vivax* cluster identification is adapted from the CYCLONE approach developed at CDC for *Cyclospora* food-borne outbreak surveillance [@nascimento2019mitochondrial] . The *P. vivax* pipeline uses 495 amplicons in the AmpliSeq assay and identifies haplotypes at each marker in each sample. We then calculate a pairwise distance matrix from the haplotypes shared between samples and identify closely related samples belonging to the same cluster.
+
+##### **Geographic Region Prediction**
+
+Using an analysis tool [@trimarsanto2022molecular] that is independent of the genetic clustering approach discussed above, we selected a subset of markers (sequenced via the same AmpliSeq approach described above) to predict the most likely geographic region for the samples in our dataset. Geographic prediction is limited to the regions in the table below and we are unable to predict to country-level resolution. We report the most likely geographic region in this report. Please contact MalariaLab@cdc.gov for more detail on geographic prediction and a list of countries within each region.
+
+```{r, echo = F, results='markup', message = F, warning = F}
+
+	geoKable
+```
+##### **Use of these data**
+
+The results below should always be considered in conjunction with available epidemiologic data. For example, a genetic link (i.e., detecting two samples assigned to the same genetic cluster) may be used retrospectively as additional evidence to support an already existing epidemiologic hypothesis (e.g., two *P. vivax* malaria cases that may be related due to their occurrence at a similar time and place). Importantly, it is often difficult to exclude the possibility that two patients may have become infected with the same strain of parasite by coincidence. Therefore, these genetic clustering data should be viewed as a piece of evidence to support an existing epidemiologic hypothesis.
+
+___
+
+#### ***P. vivax* Genetic Clustering and Geographic Prediction Results Table**
+
+Table 11 below lists all *P. vivax* isolates from `r stateID` and their associated metadata. The table is inclusive of samples analyzed by PET-PCR plus samples that were sequenced after PET-PCR. Geographic prediction results and genetic cluster information are provided for samples that were sequenced, while samples that have only undergone PET-PCR will say *Not_Tested* in the geographic prediction and genetic cluster number results columns. Samples that were sequenced but lacked sufficient DNA quality and/or quantity to yield a high-confidence genotype have 'Incomplete Genotype' in one or both of the results columns. 
+
+The GeoPrediction column lists the most likely geographic region for the parasites found in the sample, based on a likelihood classifier built from a reference population of approximately 1,000 samples from the [MalariaGEN Pv4 data release](https://www.malariagen.net/data_package/open-dataset-plasmodium-vivax-v4-0/) [@adam2022open]. The probability that the sample belongs to the geographic region indicated is given in parenthesis. Note that geographic prediciton is provided for both *P. falciparum* and *P. vivax*; however, the vast marjoriy of samples only have geographic predictions for one or the other species. 
+
+Samples that were successfully genetically clustered are also listed in the **Genetic Clusters Table** below (Table 12), where each distinct genetic cluster is demarcated by the purple bolded lines above and below the last sample in the cluster. 
+
+
+#### **All *P. vivax* Samples**
+```{r, echo = F, results='markup', message = F, warning = F}
+
+	vivaxOnly_kable
+```
+
+#### Download link for the table above
+```{r, echo = F}
+xfun::embed_file(csvName)
+```
+
+
+
+<br>
+
+
+
+___
+
+
+#### **Genetic Clusters Table**
+```{r, echo = F, results='markup', message = F, warning = F}
+
+	kable_out
+```
+
+#### **Clustering**
+
+The tree below depicts genetic relationships amongst *P. vivax* isolates sequenced from positive blood samples, representing eight distinct geographic regions. The dataset contains samples that were available in public databases as well as samples from CDC’s archive of confirmed *P. vivax* positive samples. To analyze the *P. vivax* samples in CDC’s archive, a Next-Generation Sequencing (NGS) approach based on Illumina AmpliSeq technology was used, which targeted 415 regions across all 14 chromosomes of the *P. vivax* genome. After running our custom bioinformatic pipeline on the resultant sequence data, we clustered samples together based on the number of sequence variants shared between them. When looking at the outside ring of the tree, samples sharing a close genetic relationship that are labelled with peripheral bars of the same color. In other words, samples with the same peripheral bar color are considered to be members of a genetic cluster where all members are closely related. *Plasmodium vivax* isolates are assigned to the same cluster   if the genetic distance between them falls below a certain genetic threshold that is computed automatically by our workflow using a statistical approach. Samples that are not marked with the same-colored bars are not considered to be members of the same cluster.
+
+#### **Geographic Region Prediction**
+
+After running our geographic analysis, we map the geographic prediction results onto the tree, which can be seen when looking at the colored branches originating from the center of the tree (note the color coding in the legend below). 
+
+```{r, echo = F, results='markup', message = F, warning = F}
+
+	geoKableLegend
+```
+
+
+
+```{r out.width="100%", out.height="1000", echo=FALSE, fig.align = 'center'}
+  knitr::include_graphics(treeFile)
+```
+
+___
+
+### References
+
+
+
+
+
+

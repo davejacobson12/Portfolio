@@ -1,0 +1,3 @@
+Sample_Status,CSID,LSDB_Specimen_ID,LSDB_Sequence_ID,State_Lab_ID,Case_ID,Collection_date,Submitter_State,Reported_Travel_History,Malaria_Species,HRP2/3 Deletions,GeoPrediction,GeneticClusterNumber,Final_COI,State_name,ReportStatusDate,N51I,C59R,S108N,I431V,S436H,A437G,K540E,A581G,A613T/S
+Final_Report,716943892,DM25_NY0001,DM25_NY0001_Pf1,Nymal001,Nycase0324,3/2/2025,NY,Nigeria,Plasmodium falciparum,No Deletion,AF_W,,Monoclonal,New York,4/12/2025,I,R,N,I,S,A,E,A,A
+Final_Report,722465765,DM25_NY0004,DM25_NY0004_Pf1,Nymal004,Nycase0327,3/29/2025,NY,Burkina Faso,Plasmodium falciparum,No Deletion,AF_W,,Monoclonal,New York,4/12/2025,I,R,N,I,S,G,K,A,A

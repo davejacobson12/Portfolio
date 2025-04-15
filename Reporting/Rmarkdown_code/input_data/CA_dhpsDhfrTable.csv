@@ -1,0 +1,4 @@
+Sample_Status,CSID,LSDB_Specimen_ID,LSDB_Sequence_ID,State_Lab_ID,Case_ID,Collection_date,Submitter_State,Reported_Travel_History,Malaria_Species,HRP2/3 Deletions,GeoPrediction,GeneticClusterNumber,Final_COI,State_name,ReportStatusDate,N51I,C59R,S108N,I431V,S436H,A437G,K540E,A581G,A613T/S
+Final_Report,212959573,DM25_CA0003,DM25_CA0003_Pf1,Camal003,caseCA553,4/1/2025,CA,Uganda,Plasmodium falciparum,Not tested,AF_R,,Multiclonal,California,4/12/2025,I,R,N,I,S,A,K,A,A
+Final_Report,846984536,DM25_CA0004,DM25_CA0004_Pf1,Camal004,caseCA554,4/1/2025,CA,Uganda,Plasmodium falciparum,No Deletion,AF_R,,Monoclonal,California,4/12/2025,I,R,N,I,S,G,K,A,A
+Final_Report,655520716,DM25_CA0005,DM25_CA0005_Pf1,Camal005,caseCA555,4/1/2025,CA,Nigeria,Plasmodium falciparum,No Deletion,AF_R,,Monoclonal,California,4/12/2025,I,R,N,I,S,A,K,A,A
