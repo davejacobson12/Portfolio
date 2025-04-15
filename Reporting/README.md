@@ -1,14 +1,16 @@
 ## Background
 
-This folder hosts input files and code used to make rmarkdown html reports and dashboards. The input files, codes, and output were made to mimic what I generated at CDC, as part of the Domestic Parastic Surveillance team. The html reports would be shared with epidemiologists at CDC and State Public Health Labs. The purpose of the html reports was to share updates on the status of the specimens that we have analyzed and provide information on limited genotyping results.
+This folder hosts demo reports/dashboards that I created while working at CDC. The primary purpose of these reports was to share updates on the status of the specimens that CDC analyzed for parasite domestic surveillance and provide limited genotyping reports. The reports' audience were collaborators at State Public Health Labs (both epidemiologists and laboratorians)
 
-## Data
+The reports shared with SPHLs were in html format, which cannot be rendered on GitHub. You will need to navigate to the HTML_process_reports folder to download and unzip the reports, which will then open in a web browser.
 
-I am not able to share any of the data or reports that I used/created at CDC. Therefore, I made fake data to mimic the structure of the data I used, and shows the extracting/transforming of data necessary to create the reports. 
+## Data / Code
+
+I am not able to share any of the data or reports that I used/created at CDC. Therefore, I made fake data to mimic the structure that were used to generate the reports and dashboards. The code and input files used to generate the HTML reports are in the Rmarkdown_code directory.
+
+Please note that the mutations reported in the *P.falciparum* section of the *Plasmodium* report are not actual true mutations that were detected, they are randomly generated mutations and thus do not represent any resistance profile that was ever detected.
 
 ## Reports
-
-The rmarkdown reports are html documents and are not rendered in GitHub. You will need to download the gzipped example repeorts, unzip them, and then open the html files in a file browser to view the full report
 
 The dashboards I created at CDC were primarily in PowerBI (with some Rshiny as well). I have decided to recreate these dashboards using plotly and dash in python. The idea is to showcase what was included in the various reports.
 
