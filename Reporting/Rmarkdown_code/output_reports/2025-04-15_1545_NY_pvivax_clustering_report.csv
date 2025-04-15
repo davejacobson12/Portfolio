@@ -1,0 +1,3 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Collection_date,Reported_Travel_History,Sample_Status,GeneticClusterNumber,GeoPrediction
+DM25_NY0002,Nymal002,Nycase0325,3/2/2025,Brazil,Final_Report,3,LAM
+DM25_NY0003,Nymal003,Nycase0326,3/18/2025,Venezuela,Final_Report,4,LAM

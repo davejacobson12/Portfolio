@@ -1,0 +1,10 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Reported_Travel_History,HRP2.3.Deletions,GeoPrediction,Final_COI,N51I,C59R,S108N,I431V,S436H,A437G,K540E,A581G,A613T,A613S,P441L,F446I,G449A,N458Y,C469Y,M476I,A481V,X7493H,N537I,G538V,R439T,Y493H,I543T,P553L,R561H,V568G,P574L,A578S,C580Y,D584V,R622I,A675V,C72S,V73K,M74I,N75E,K76T,A220S,Q271E,N326S,C530R,I356T,R37I,I258M,Y268S,Y268C,N86Y,Y184F,S1034C,N1042D,D1246Y
+DM25_TX0001,Txmal001,Txcasemalaria001,Ghana,No Deletion,AF_W,Monoclonal,I,R,N,I,S,A,K,A,A,A,P,FALSE,G,N,C,M,V,7,N,G,R,Y,I,P,R,V,P,A,C,D,R,A,S,V,I,N,K,A,Q,S,R,I,I,I,Y,Y,N,Y,C,N,D
+DM25_TX0002,Txmal002,Txcasemalaria002,Not Provided,Not tested,AF_R,Multiclonal,I,R,N,I,S,A,K,A,A,A,P,FALSE,G,N,C,M,V,7,N,G,R,Y,I,L,R,V,P,S,C,D,R,A,S,V,I,N,K,A,Q,N,C,I,R,I,Y,Y,N,Y,S,N,Y
+DM25_TX0003,Txmal003,Txcasemalaria003,Not Provided,,AF,,,,,,,,,,,,,NA,,,,,,NA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DM25_TX0004,Txmal004,Txcasemalaria004,Cambodia,,ESEA,,,,,,,,,,,,,NA,,,,,,NA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DM25_TX0005,Txmal005,Txcasemalaria005,Kenya,No Deletion,AF_W,Monoclonal,I,R,N,I,S,A,K,A,A,A,P,FALSE,G,Y,C,M,A,7,N,G,R,Y,I,P,R,V,P,A,C,D,R,A,S,V,I,N,K,A,Q,N,C,I,R,I,Y,Y,N,Y,S,N,D
+DM25_TX0006,Txmal006,Txcasemalaria006,Tanzania,Not tested,AF_R,Multiclonal,I,R,N,I,S,A,K,A,A,A,P,FALSE,G,Y,C,M,A,7,N,G,R,Y,I,P,R,V,P,A,C,D,R,A,S,V,I,N,K,A,Q,N,C,I,R,I,Y,Y,N,Y,S,N,D
+DM25_TX0007,Txmal007,Txcasemalaria007,Ethiopia,,AF,,,,,,,,,,,,,NA,,,,,,NA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DM25_TX0008,Txmal008,Txcasemalaria008,Ethiopia,,AF,,,,,,,,,,,,,NA,,,,,,NA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+DM25_TX0009,Txmal009,Txcasemalaria009,Not Provided,,,,,,,,,,,,,,,NA,,,,,,NA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

@@ -1,0 +1,5 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Collection_date,Reported_Travel_History,Sample_Status,GeneticClusterNumber,GeoPrediction
+DM25_TX0003,Txmal003,Txcasemalaria003,3/9/2025,Not Provided,Final_Report,6,AF
+DM25_TX0004,Txmal004,Txcasemalaria004,3/9/2025,Cambodia,Final_Report,12,ESEA
+DM25_TX0007,Txmal007,Txcasemalaria007,4/9/2025,Ethiopia,Final_Report,6,AF
+DM25_TX0008,Txmal008,Txcasemalaria008,4/9/2025,Ethiopia,Final_Report,6,AF

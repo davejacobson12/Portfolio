@@ -1,0 +1,10 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Collection_date,Reported_Travel_History,Sample_Status,ReportStatusDate,Malaria_Species
+DM25_TX0001,Txmal001,Txcasemalaria001,3/9/2025,Ghana,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_TX0002,Txmal002,Txcasemalaria002,3/9/2025,Not Provided,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_TX0003,Txmal003,Txcasemalaria003,3/9/2025,Not Provided,Final_Report,4/12/2025,Plasmodium vivax
+DM25_TX0004,Txmal004,Txcasemalaria004,3/9/2025,Cambodia,Final_Report,4/12/2025,Plasmodium vivax
+DM25_TX0005,Txmal005,Txcasemalaria005,4/9/2025,Kenya,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_TX0006,Txmal006,Txcasemalaria006,4/9/2025,Tanzania,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_TX0007,Txmal007,Txcasemalaria007,4/9/2025,Ethiopia,Final_Report,4/12/2025,Plasmodium vivax
+DM25_TX0008,Txmal008,Txcasemalaria008,4/9/2025,Ethiopia,Final_Report,4/12/2025,Plasmodium vivax
+DM25_TX0009,Txmal009,Txcasemalaria009,4/12/2025,Not Provided,PCR_complete,4/12/2025,Plasmodium malariae

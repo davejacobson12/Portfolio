@@ -1,0 +1,3 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Collection_date,Reported_Travel_History,Sample_Status,GeneticClusterNumber,GeoPrediction
+DM25_FL0001,Flmal001,Casfl234,2/9/2025,Colombia,Reviewing_Report,8,LAM
+DM25_FL0002,Flmal002,Casfl235,2/18/2025,Peru,PCR_complete,NA,LAM

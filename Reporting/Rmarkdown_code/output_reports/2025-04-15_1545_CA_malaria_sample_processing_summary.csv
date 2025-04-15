@@ -1,0 +1,6 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Collection_date,Reported_Travel_History,Sample_Status,ReportStatusDate,Malaria_Species
+DM25_CA0001,Camal001,caseCA551,2/3/2025,Not Provided,Final_Report,4/12/2025,Plasmodium vivax
+DM25_CA0002,Camal002,caseCA552,2/8/2025,Brazil,Sample_Received,3/9/2025,N/A
+DM25_CA0003,Camal003,caseCA553,4/1/2025,Uganda,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_CA0004,Camal004,caseCA554,4/1/2025,Uganda,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_CA0005,Camal005,caseCA555,4/1/2025,Nigeria,Final_Report,4/12/2025,Plasmodium falciparum

@@ -1,0 +1,5 @@
+LSDB_Specimen_ID,State_Lab_ID,Case_ID,Collection_date,Reported_Travel_History,Sample_Status,ReportStatusDate,Malaria_Species
+DM25_NY0001,Nymal001,Nycase0324,3/2/2025,Nigeria,Final_Report,4/12/2025,Plasmodium falciparum
+DM25_NY0002,Nymal002,Nycase0325,3/2/2025,Brazil,Final_Report,4/12/2025,Plasmodium vivax
+DM25_NY0003,Nymal003,Nycase0326,3/18/2025,Venezuela,Final_Report,4/12/2025,Plasmodium vivax
+DM25_NY0004,Nymal004,Nycase0327,3/29/2025,Burkina Faso,Final_Report,4/12/2025,Plasmodium falciparum
