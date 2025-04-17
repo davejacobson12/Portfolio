@@ -2,6 +2,7 @@
 
 library(shiny) #yes
 library(shinydashboard)
+library(countrycode)
 library(ggplot2) #yes
 library(dplyr) #yes
 # library(usmap) #yes
@@ -57,6 +58,41 @@ plotlyFunTest <- function(df){
     fig 
 }
 
+
+plotlyWorld <- function(df){
+    df <- df[!df$Reported_Travel_History == "",]
+    countryCount <- df %>% count(
+        Reported_Travel_History
+    )
+    countryCount <- as.data.frame(countryCount)
+    # print(countryCount)
+   countryCount$code <- countrycode(sourcevar = countryCount$Reported_Travel_History, destination = "iso3c", origin = "country.name.en")
+    # print(countryCount)
+    countryCount$n = as.numeric(countryCount$n)
+    # countryCount <- coun
+    # light grey boundaries
+    l <- list(color = toRGB("grey"), width = 0.5)
+
+    # specify map projection/options
+    g <- list(
+    showframe = TRUE,
+    showcoastlines = TRUE,
+    projection = list(type = 'natural earth')
+    )
+
+    fig <- plot_geo(countryCount)
+    fig <- fig %>% add_trace(
+        z = ~n, color = ~n, colors = 'Blues',
+        text = ~Reported_Travel_History, locations = ~code, marker = list(line = l)
+    )
+    fig <- fig %>% colorbar(title = 'Countries', tickprefix = '$')
+    fig <- fig %>% layout(
+        # title = '2014 Global GDP<br>Source:<a href="https://www.cia.gov/library/publications/the-world-factbook/fields/2195.html">CIA World Factbook</a>',
+        geo = g
+    )
+
+    fig
+    }
 
 countSequences <- function(df){
     allVec <- unique(df$LSDB_Sequence_ID)
@@ -153,7 +189,8 @@ ui2 <- fluidPage(theme = shinytheme("cerulean"),
                     ),
                      mainPanel(
                         fluidRow(h1("Specimen Submission Summary"),splitLayout(plotlyOutput('statesBox'), plotlyOutput('submissionsBox'), plotlyOutput('sequencedBox'))),
-                        fluidRow(h1("Specimen Submission Map"), plotlyOutput('plotlyMap'))
+                        fluidRow(h1("Specimen Submission Map"), plotlyOutput('plotlyMap')),
+                        fluidRow(h1("Travel History Map"), plotlyOutput('plotlyWorldMap'))
                         
                         )
         
@@ -194,6 +231,11 @@ server <- function(input, output, session) {
     output$plotlyMap <- renderPlotly({
 		# newMap <- input$myTGC
 		plotlyFunTest(dfMal)
+		})
+
+    output$plotlyWorldMap <- renderPlotly({
+		# newMap <- input$myTGC
+		plotlyWorld(dfMal)
 		})
     output$statesBox <- renderPlotly({
         countStates(dfMal)
